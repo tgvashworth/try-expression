@@ -2,7 +2,7 @@
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Build Status](https://travis-ci.org/phuu/try-expression.svg?branch=master)](https://travis-ci.org/phuu/try-expression)
 
-JavaScript "if" as an expression.
+JavaScript's try statement as an expression.
 
 ## Install
 
@@ -12,71 +12,44 @@ npm install --save try-expression
 
 ## Use
 
-Run some code if the predicate is true:
+Try some code out and deal with an error, like `try-catch`:
 
 ```js
 import tryy from "try-expression";
 
-const message = tryy(
-  true,
-  () => "Cool!"
-); // => Cool!
+const result = tryy(
+  () => doRiskyThing(),
+  error => {
+    logError(error);
+    return 'Sorry!';
+  }
+); // => 'Sorry!'
 ```
 
-Run some other code if the predicate's false:
+Fall back to a value if there's an error:
 
 ```js
 import tryy from "try-expression";
 
-const message = tryy(
-  false,
-  () => "Cool!",
-  () => "Not so cool."
-); // => Not so cool.
+const config = tryy(
+  () => loadConfig(),
+  { squibbles: 4 }
+); // => { squibbles: 4 }
 ```
 
-Check many things!
+Run some code to clean up, like `try-catch-finally`:
 
 ```js
 import tryy from "try-expression";
 
-const message = tryy(
-  false,
-  () => "Cool!",
-  true,
-  () => "Pretty cool!",
-  () => "Not so cool."
-; // => Pretty cool!
+const result = tryy(
+  () => ['Success', readFile()],
+  err => ['Failure', err],
+  () => closeFile()
+); // => ['Failure', err];
 ```
 
-Just return a value if everything is falsey:
-
-```js
-import tryy from "try-expression";
-
-const message = tryy(
-  false,
-  () => "Cool!",
-  false,
-  () => "Pretty cool!",
-  "Not too shabby!"
-); // => Not too shabby!
-```
-
-## What to do if this makes you nervous...
-
-It can act like a statement too!
-
-```js
-import tryy from "try-expression";
-
-let message;
-tryy(true, () => {
-  message = "Cool!";
-}, () => {
-  message = "Not so cool.";
-});
-```
+Note that, to avoid [confusing JavaScript behaviour](http://eslint.org/docs/rules/no-unsafe-finally) you *cannot* return a value from `finally`.
 
 ## Development
 
