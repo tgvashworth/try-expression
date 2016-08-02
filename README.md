@@ -46,7 +46,7 @@ const result = tryy(
   () => ['Success', readFile()],
   err => ['Failure', err],
   () => closeFile()
-); // => ['Failure', err];
+); // => ['Failure', err]
 ```
 
 Note that, to avoid [confusing JavaScript behaviour](http://eslint.org/docs/rules/no-unsafe-finally) you *cannot* return a value from `finally`.
