@@ -1,6 +1,6 @@
 {
-  "name": "if-expression",
-  "description": "JavaScript \"if\" as an expression",
+  "name": "try-expression",
+  "description": "JavaScript's try statement as an expression",
   "main": "out.js",
   "files": [
     "out.js",
@@ -64,6 +64,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phuu/if-expression.git"
+    "url": "https://github.com/phuu/try-expression.git"
   }
 }

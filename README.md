@@ -1,13 +1,13 @@
-# if-expression
+# try-expression
 
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Build Status](https://travis-ci.org/phuu/if-expression.svg?branch=master)](https://travis-ci.org/phuu/if-expression)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Build Status](https://travis-ci.org/phuu/try-expression.svg?branch=master)](https://travis-ci.org/phuu/try-expression)
 
 JavaScript "if" as an expression.
 
 ## Install
 
 ```
-npm install --save if-expression
+npm install --save try-expression
 ```
 
 ## Use
@@ -15,9 +15,9 @@ npm install --save if-expression
 Run some code if the predicate is true:
 
 ```js
-import iff from "if-expression";
+import tryy from "try-expression";
 
-const message = iff(
+const message = tryy(
   true,
   () => "Cool!"
 ); // => Cool!
@@ -26,9 +26,9 @@ const message = iff(
 Run some other code if the predicate's false:
 
 ```js
-import iff from "if-expression";
+import tryy from "try-expression";
 
-const message = iff(
+const message = tryy(
   false,
   () => "Cool!",
   () => "Not so cool."
@@ -38,9 +38,9 @@ const message = iff(
 Check many things!
 
 ```js
-import iff from "if-expression";
+import tryy from "try-expression";
 
-const message = iff(
+const message = tryy(
   false,
   () => "Cool!",
   true,
@@ -52,9 +52,9 @@ const message = iff(
 Just return a value if everything is falsey:
 
 ```js
-import iff from "if-expression";
+import tryy from "try-expression";
 
-const message = iff(
+const message = tryy(
   false,
   () => "Cool!",
   false,
@@ -68,10 +68,10 @@ const message = iff(
 It can act like a statement too!
 
 ```js
-import iff from "if-expression";
+import tryy from "try-expression";
 
 let message;
-iff(true, () => {
+tryy(true, () => {
   message = "Cool!";
 }, () => {
   message = "Not so cool.";
